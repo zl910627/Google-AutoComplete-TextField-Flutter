@@ -6,16 +6,16 @@ class PlacesAutocompleteResponse {
 
   PlacesAutocompleteResponse.fromJson(Map<String, dynamic> json) {
     if (json['predictions'] != null) {
-      predictions = new List<Prediction>();
+      predictions = <Prediction>[];
       json['predictions'].forEach((v) {
-        predictions.add(new Prediction.fromJson(v));
+        predictions.add(Prediction.fromJson(v));
       });
     }
     status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (this.predictions != null) {
       data['predictions'] = this.predictions.map((v) => v.toJson()).toList();
     }
@@ -36,36 +36,37 @@ class Prediction {
   String lat;
   String lng;
 
-  Prediction(
-      {this.description,
-      this.id,
-      this.matchedSubstrings,
-      this.placeId,
-      this.reference,
-      this.structuredFormatting,
-      this.terms,
-      this.types,
-      this.lat,
-      this.lng});
+  Prediction({
+    this.description,
+    this.id,
+    this.matchedSubstrings,
+    this.placeId,
+    this.reference,
+    this.structuredFormatting,
+    this.terms,
+    this.types,
+    this.lat,
+    this.lng,
+  });
 
   Prediction.fromJson(Map<String, dynamic> json) {
     description = json['description'];
     id = json['id'];
     if (json['matched_substrings'] != null) {
-      matchedSubstrings = new List<MatchedSubstrings>();
+      matchedSubstrings = List<MatchedSubstrings>();
       json['matched_substrings'].forEach((v) {
-        matchedSubstrings.add(new MatchedSubstrings.fromJson(v));
+        matchedSubstrings.add(MatchedSubstrings.fromJson(v));
       });
     }
     placeId = json['place_id'];
     reference = json['reference'];
     structuredFormatting = json['structured_formatting'] != null
-        ? new StructuredFormatting.fromJson(json['structured_formatting'])
+        ? StructuredFormatting.fromJson(json['structured_formatting'])
         : null;
     if (json['terms'] != null) {
-      terms = new List<Terms>();
+      terms = List<Terms>();
       json['terms'].forEach((v) {
-        terms.add(new Terms.fromJson(v));
+        terms.add(Terms.fromJson(v));
       });
     }
     types = json['types'].cast<String>();
@@ -74,7 +75,7 @@ class Prediction {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['description'] = this.description;
     data['id'] = this.id;
     if (this.matchedSubstrings != null) {
@@ -109,7 +110,7 @@ class MatchedSubstrings {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['length'] = this.length;
     data['offset'] = this.offset;
     return data;
@@ -130,7 +131,7 @@ class StructuredFormatting {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['main_text'] = this.mainText;
     data['secondary_text'] = this.secondaryText;
     return data;
@@ -149,7 +150,7 @@ class Terms {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['offset'] = this.offset;
     data['value'] = this.value;
     return data;

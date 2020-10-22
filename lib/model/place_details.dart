@@ -6,12 +6,12 @@ class PlaceDetails {
 
   PlaceDetails.fromJson(Map<String, dynamic> json) {
     result =
-        json['result'] != null ? new Result.fromJson(json['result']) : null;
+        json['result'] != null ? Result.fromJson(json['result']) : null;
     status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
 
     if (this.result != null) {
       data['result'] = this.result.toJson();
@@ -57,22 +57,22 @@ class Result {
 
   Result.fromJson(Map<String, dynamic> json) {
     if (json['address_components'] != null) {
-      addressComponents = new List<AddressComponents>();
+      addressComponents = <AddressComponents>[];
       json['address_components'].forEach((v) {
-        addressComponents.add(new AddressComponents.fromJson(v));
+        addressComponents.add(AddressComponents.fromJson(v));
       });
     }
     adrAddress = json['adr_address'];
     formattedAddress = json['formatted_address'];
     geometry = json['geometry'] != null
-        ? new Geometry.fromJson(json['geometry'])
+        ? Geometry.fromJson(json['geometry'])
         : null;
     icon = json['icon'];
     name = json['name'];
     if (json['photos'] != null) {
-      photos = new List<Photos>();
+      photos = <Photos>[];
       json['photos'].forEach((v) {
-        photos.add(new Photos.fromJson(v));
+        photos.add(Photos.fromJson(v));
       });
     }
     placeId = json['place_id'];
@@ -86,7 +86,7 @@ class Result {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (this.addressComponents != null) {
       data['address_components'] =
           this.addressComponents.map((v) => v.toJson()).toList();
@@ -127,7 +127,7 @@ class AddressComponents {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['long_name'] = this.longName;
     data['short_name'] = this.shortName;
     data['types'] = this.types;
@@ -143,15 +143,15 @@ class Geometry {
 
   Geometry.fromJson(Map<String, dynamic> json) {
     location = json['location'] != null
-        ? new Location.fromJson(json['location'])
+        ? Location.fromJson(json['location'])
         : null;
     viewport = json['viewport'] != null
-        ? new Viewport.fromJson(json['viewport'])
+        ? Viewport.fromJson(json['viewport'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (this.location != null) {
       data['location'] = this.location.toJson();
     }
@@ -174,7 +174,7 @@ class Location {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['lat'] = this.lat;
     data['lng'] = this.lng;
     return data;
@@ -189,15 +189,15 @@ class Viewport {
 
   Viewport.fromJson(Map<String, dynamic> json) {
     northeast = json['northeast'] != null
-        ? new Location.fromJson(json['northeast'])
+        ? Location.fromJson(json['northeast'])
         : null;
     southwest = json['southwest'] != null
-        ? new Location.fromJson(json['southwest'])
+        ? Location.fromJson(json['southwest'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (this.northeast != null) {
       data['northeast'] = this.northeast.toJson();
     }
@@ -224,7 +224,7 @@ class Photos {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['height'] = this.height;
     data['html_attributions'] = this.htmlAttributions;
     data['photo_reference'] = this.photoReference;

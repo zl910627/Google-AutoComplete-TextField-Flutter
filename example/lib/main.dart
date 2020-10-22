@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
           getPlaceDetailWithLatLng: (Prediction prediction) {
             print("placeDetails" + prediction.lng.toString());
           },
-          itmClick: (Prediction prediction) {
+          itemClick: (Prediction prediction) {
             controller.text = prediction.description;
 
             controller.selection = TextSelection.fromPosition(
