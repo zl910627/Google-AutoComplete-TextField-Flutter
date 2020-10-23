@@ -85,7 +85,7 @@ class _GooglePlaceAutoCompleteTextFieldState
 
     if (text.length == 0) {
       alPredictions.clear();
-      this._overlayEntry.remove();
+      _overlayEntry?.remove();
       return;
     }
 
@@ -95,12 +95,12 @@ class _GooglePlaceAutoCompleteTextFieldState
       alPredictions.addAll(subscriptionResponse.predictions);
     }
 
-    //if (this._overlayEntry == null)
+    //if (_overlayEntry == null)
 
-    this._overlayEntry = null;
-    this._overlayEntry = this._createOverlayEntry();
-    Overlay.of(context).insert(this._overlayEntry);
-    //   this._overlayEntry.markNeedsBuild();
+    _overlayEntry = null;
+    _overlayEntry = this._createOverlayEntry();
+    Overlay.of(context).insert(_overlayEntry);
+    //   _overlayEntry.markNeedsBuild();
   }
 
   @override
@@ -160,11 +160,11 @@ class _GooglePlaceAutoCompleteTextFieldState
   }
 
   removeOverlay() {
-    alPredictions.clear();
-    this._overlayEntry = this._createOverlayEntry();
+    alPredictions?.clear();
+    _overlayEntry = this._createOverlayEntry();
     if (context != null) {
-      Overlay.of(context).insert(this._overlayEntry);
-      this._overlayEntry.markNeedsBuild();
+      Overlay.of(context).insert(_overlayEntry);
+      _overlayEntry.markNeedsBuild();
     }
   }
 
